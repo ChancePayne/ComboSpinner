@@ -10,6 +10,7 @@
     <com.lambdaschool.combospinner.view.ComboView
             app:textSize="22sp"
             app:layout_weight="1"
+            android:entries="@array/combo_values"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"

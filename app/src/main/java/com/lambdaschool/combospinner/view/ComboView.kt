@@ -20,18 +20,22 @@ class ComboView(context: Context, attrs: AttributeSet?): LinearLayout(context, a
 
 //    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int): super(context, attrs, defStyleAttr, defStyleRes)
 
-    val listItems = listOf("Cat", "o'nine", "tails", "topmast", "loot", "Nelsons", "folly", "code", "of", "conduct", "bilge", "scuppers", "barque","spanker", "warp")
+    var listItems = listOf("Cat", "o'nine", "tails", "topmast", "loot", "Nelsons", "folly", "code", "of", "conduct", "bilge", "scuppers", "barque","spanker", "warp")
+    val size: Int
+        get() {
+            return listItems.size
+        }
     var pointer = 0
     fun incrementPointer() {
         pointer++
-        if(pointer >= listItems.size) {
+        if(pointer >= size) {
             pointer = 0
         }
     }
     fun decrementPointer() {
         pointer--
         if(pointer < 0) {
-            pointer = listItems.size - 1
+            pointer = size - 1
         }
     }
 
@@ -41,6 +45,7 @@ class ComboView(context: Context, attrs: AttributeSet?): LinearLayout(context, a
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ComboView)
         val textWeight = typedArray.getFloat(R.styleable.ComboView_layout_weight, 8f)
         val textSize = typedArray.getDimension(R.styleable.ComboView_textSize, 12f)
+        val listItems = typedArray.getTextArray(R.styleable.ComboView_android_entries)
         typedArray.recycle()
 
         val textLayoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, textWeight)
@@ -72,5 +77,9 @@ class ComboView(context: Context, attrs: AttributeSet?): LinearLayout(context, a
         addView(previousImageView)
         addView(textView)
         addView(nextImageView)
+    }
+
+    fun setStringValues(strings: List<String>) {
+        listItems = strings
     }
 }
