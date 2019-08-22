@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ComboSpinner</string>
     <string-array name="combo_values">
-        <item>One</item>
+        <item>1</item>
         <item>Two</item>
         <item>Three</item>
         <item>Four</item>
